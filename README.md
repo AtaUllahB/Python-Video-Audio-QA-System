@@ -33,4 +33,6 @@ The application is designed to be deployed on Streamlit Cloud.
 
 Streamlit for providing an easy-to-use framework for building web applications.
 
-<img src="https://github.com/AtaUllahB/Python-Video-Audio-QA-System/blob/master/recording.gif?raw=true">
+<img src="https://github.com/AtaUllahB/Python-Video-Audio-QA-System/blob/16931247ca2a5b32aadfcc0235d8ce20c45640db/recording.gif?raw=true">
+
+
