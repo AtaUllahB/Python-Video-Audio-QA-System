@@ -32,3 +32,5 @@ The application is designed to be deployed on Streamlit Cloud.
 ## Acknowledgments
 
 Streamlit for providing an easy-to-use framework for building web applications.
+
+<img src="https://github.com/AtaUllahB/React-ReCharts/blob/master/recording.gif?raw=true">
