@@ -1,0 +1,5 @@
+streamlit
+moviepy
+openai-whisper
+google-generativeai
+pytube
