@@ -1,9 +1,10 @@
-import os
+import osprocess_youtube_url
 import streamlit as st
 from pytube import YouTube
 from chat_management import add_message
 from transcription import transcribe_audio
 from pytube.exceptions import RegexMatchError
+from pytube.exceptions import VideoUnavailable
 from moviepy.editor import VideoFileClip, AudioFileClip
 
 def save_uploaded_file(uploaded_file):
@@ -43,12 +44,21 @@ def extract_youtube_audio(video_file_path):
 def download_youtube_video(youtube_url):
     try:
         yt = YouTube(youtube_url)
+        yt.bypass_age_gate()  # Bypass age gate if necessary
         video = yt.streams.filter(only_audio=True).first()
-        video_file_path = 'temp_video.mp4'
+        if not video:
+            raise Exception("No audio stream available.")
+
+        video_file_path = 'temp_video.mp4'  # Adjust this path as needed
         video.download(filename=video_file_path)
         return video_file_path
-    except RegexMatchError as e:
-        st.error("Please enter a valid YouTube URL.")
+
+    except VideoUnavailable:
+        print("Video is unavailable. Please check the URL or its availability.")
+        return None
+    except Exception as e:
+        print(f"An error occurred while downloading the video: {e}")
+        return None
 
 def process_youtube_url(youtube_url):
     with st.status("Processing URL...", expanded=True) as status:
